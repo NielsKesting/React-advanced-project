@@ -1,17 +1,18 @@
-import React from "react";
-import { Heading } from "@chakra-ui/react";
-import { events } from "../data/events.json";
-import { PostCard } from "../components/ui/PostCard";
-// import { ControlledInputForm } from "../components/ui/Form";
+// import "./EventsPageStyle/EventsPage.css";
+import { useState } from "react";
+import { EventPage } from "./EventPage.jsx";
+import { PageRetriever } from "../components/PageRetriever.jsx";
 
-export const EventsPage = () => {
+export function EventsPage() {
+  let [event, setEvent] = useState();
+
   return (
     <>
-      <Heading>List of events</Heading>;
-      {events.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
-      {/* <ControlledInputForm /> */}
+      {event ? (
+        <EventPage post={event} onClick={setEvent} />
+      ) : (
+        <PageRetriever onClick={setEvent} />
+      )}
     </>
   );
-};
+}

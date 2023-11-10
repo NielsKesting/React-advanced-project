@@ -1,12 +1,9 @@
-import {react} from "react";
+import "../ui/ButtonStyle/button.css";
 
-export function Button(){
-    const btnState(buttontext)
-
-    return (
-        <button>
-            buttontext
-        </button>
-    )
-
-} 
+export function Button({ btnText }) {
+  return (
+    <button type="button" className="button">
+      {btnText}
+    </button>
+  );
+}

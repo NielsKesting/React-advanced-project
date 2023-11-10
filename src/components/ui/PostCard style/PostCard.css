@@ -1,12 +1,15 @@
-h2 {
-  size: 15px;
-}
-
 .postCard {
-  width: 90vw;
+  width: 70vw;
   border-radius: 5px;
   text-align: center;
-  border: solid 1px black;
+  box-shadow: 0px 3px 5px grey;
+  background-color: white;
+}
+
+.postCard:hover {
+  position: relative;
+  top: -5px;
+  box-shadow: 0px 6px 10px grey;
 }
 
 .postCardPicture {
@@ -17,7 +20,6 @@ h2 {
 }
 
 .postCardInfoBox {
-  background-color: rgb(182, 194, 218);
   border-radius: 0px 0px 5px 5px;
   height: 32vh;
   display: flex;
@@ -26,51 +28,9 @@ h2 {
   align-items: center;
   gap: 3px;
 }
-.postCardInfoBox .meal .mealType {
-  color: grey;
-}
-.postCardInfoBox .meal h2 {
-  font-size: 6vw;
+.postCardInfoBox h2 {
+  font-size: 23px;
   font-weight: bold;
-  padding: 0px 3vw 0px 3vw;
-}
-.postCardInfoBox .details {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-}
-.postCardInfoBox .details .veganVegetarian {
-  background-color: rgb(237, 132, 237);
-  padding: 0px 5px 0px 5px;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-radius: 5px;
-}
-.postCardInfoBox .details .dietLabels {
-  display: flex;
-  justify-content: center;
-  gap: 3px;
-}
-.postCardInfoBox .details .dietLabels > li {
-  list-style-type: none;
-  background-color: rgb(132, 237, 146);
-  padding: 0px 5px 0px 5px;
-  border-radius: 5px;
-}
-.postCardInfoBox .details .cautionList {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 3px;
-}
-.postCardInfoBox .details .cautionList > li {
-  list-style-type: none;
-  font-weight: bold;
-  background-color: rgb(240, 146, 146);
-  padding: 0px 5px 0px 5px;
-  border-radius: 5px;
 }
 
 @media (min-width: 1200px) {
@@ -79,13 +39,5 @@ h2 {
   }
   .postCard .postCardPicture {
     height: 150px;
-  }
-  .postCard .meal .mealType {
-    color: rgb(173, 194, 203);
-  }
-  .postCard .meal h2 {
-    font-size: 20px;
-    font-weight: bold;
-    padding: 0px 3vw 0px 3vw;
   }
 }/*# sourceMappingURL=PostCard.css.map */

@@ -2,7 +2,7 @@ import "./PostCard style/PostCard.css";
 import { users } from "../../data/events.json";
 import { categories } from "../../data/events.json";
 
-export function PostCard({ post }) {
+export const PostCard = ({ post, onClick }) => {
   const getUser = (createdBy) => {
     const user = users.filter((user) => user.id == createdBy);
     return user[0].name;
@@ -47,7 +47,7 @@ export function PostCard({ post }) {
 
   return (
     <>
-      <button className="postCard">
+      <button className="postCard" onClick={() => onClick(post)}>
         <img className="postCardPicture" src={post.image}></img>
         <div className="postCardInfoBox">
           <h2>{post.title}</h2>
@@ -63,4 +63,4 @@ export function PostCard({ post }) {
       </button>
     </>
   );
-}
+};

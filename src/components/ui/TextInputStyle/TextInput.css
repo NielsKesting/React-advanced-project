@@ -1,0 +1,13 @@
+.textInput {
+  text-align: center;
+  width: 90vw;
+  padding: 5px;
+  border: 2px solid rgb(17, 178, 231);
+  border-radius: 25px;
+}
+
+@media (min-width: 1500px) {
+  .textInput {
+    width: 15vw;
+  }
+}/*# sourceMappingURL=TextInput.css.map */

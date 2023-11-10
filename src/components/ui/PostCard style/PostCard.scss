@@ -1,15 +1,18 @@
 $postCardCorner: 5px;
 $highlightCorner: 5px;
 
-h2 {
-  size: 15px;
-}
-
 .postCard {
-  width: 90vw;
+  width: 70vw;
   border-radius: $postCardCorner;
   text-align: center;
-  border: solid 1px black;
+  box-shadow: 0px 3px 5px grey;
+  background-color: white;
+}
+
+.postCard:hover {
+  position: relative;
+  top: -5px;
+  box-shadow: 0px 6px 10px grey;
 }
 
 .postCardPicture {
@@ -19,7 +22,10 @@ h2 {
 }
 
 .postCardInfoBox {
-  background-color: rgb(182, 194, 218);
+  h2 {
+    font-size: 23px;
+    font-weight: bold;
+  }
   border-radius: 0px 0px $postCardCorner $postCardCorner;
   height: 32vh;
   display: flex;
@@ -27,61 +33,6 @@ h2 {
   justify-content: flex-start;
   align-items: center;
   gap: 3px;
-
-  .meal {
-    .mealType {
-      color: grey;
-    }
-
-    h2 {
-      font-size: 6vw;
-      font-weight: bold;
-      padding: 0px 3vw 0px 3vw;
-    }
-  }
-
-  .details {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-
-    .veganVegetarian {
-      background-color: rgb(237, 132, 237);
-      padding: 0px 5px 0px 5px;
-      width: fit-content;
-      border-radius: $highlightCorner;
-    }
-
-    .dietLabels {
-      display: flex;
-      justify-content: center;
-      gap: 3px;
-
-      > li {
-        list-style-type: none;
-        background-color: rgb(132, 237, 146);
-        padding: 0px 5px 0px 5px;
-        border-radius: $highlightCorner;
-      }
-    }
-
-    .cautionList {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 3px;
-
-      > li {
-        list-style-type: none;
-        font-weight: bold;
-        background-color: rgb(240, 146, 146);
-        padding: 0px 5px 0px 5px;
-        border-radius: $highlightCorner;
-      }
-    }
-  }
 }
 
 @media (min-width: 1200px) {
@@ -90,18 +41,6 @@ h2 {
 
     .postCardPicture {
       height: 150px;
-    }
-
-    .meal {
-      .mealType {
-        color: rgb(173, 194, 203);
-      }
-
-      h2 {
-        font-size: 20px;
-        font-weight: bold;
-        padding: 0px 3vw 0px 3vw;
-      }
     }
   }
 }
