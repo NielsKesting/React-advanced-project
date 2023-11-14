@@ -1,12 +1,15 @@
 import { useState } from "react";
+import "../../Style/FormStyle/form.css";
+import "../../Style/TextInputStyle/textInput.css";
 
-export const LoginForm = () => () => {
-  const [activeUser, setActiveUser] = useState("");
-  const [password, setPassword] = useState("");
+export const LoginForm = () => {
+  let [loginData, setLoginData] = useState({
+    name: "",
+    password: "",
+  });
 
   const handleChange = (event) => {
-    setActiveUser(event.target.value);
-    setPassword(event.target.value);
+    setLoginData(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -14,11 +17,23 @@ export const LoginForm = () => () => {
     console.log(event);
   };
 
-return (
-  <form onSubmit={ handleSubmit }>
-    <input placeholder="Username" value={activeUser} onChange={handleChange}></input>
-    <input placeholder="Password" value={password} onChange={handleChange}></input>
-    <button type="submit"></button>
-  </form>
-);
+  return (
+    <form className="form" onSubmit={handleSubmit}>
+      <input
+        className="textInput"
+        placeholder="Username"
+        value={loginData.name}
+        onChange={handleChange}
+      ></input>
+      <input
+        className="textInput"
+        placeholder="Password"
+        value={loginData.password}
+        onChange={handleChange}
+      ></input>
+      <button className="button" type="submit">
+        Submit
+      </button>
+    </form>
+  );
 };

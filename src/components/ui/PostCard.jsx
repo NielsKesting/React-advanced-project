@@ -1,9 +1,9 @@
 import "../Style/PostCardStyle/PostCard.css";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { users } from "../../data/events.json";
 import { categories } from "../../data/events.json";
 
-export const PostCard = ({ post, onClick }) => {
+export const PostCard = ({ post }) => {
   const getUser = (createdBy) => {
     const user = users.filter((user) => user.id == createdBy);
     return user[0].name;

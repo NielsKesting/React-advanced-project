@@ -1,6 +1,8 @@
 import { useState } from "react";
+import "../../Style/FormStyle/form.css";
+import "../../Style/TextInputStyle/textInput.css";
 
-export const CreateUserForm = () => () => {
+export const CreateUserForm = () => {
   const [newUserName, setNewUserName] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
@@ -16,12 +18,27 @@ export const CreateUserForm = () => () => {
     console.log(event);
   };
 
-return (
-  <form onSubmit={ handleSubmit }>
-    <input placeholder="Username" value={newUserName} onChange={handleChange}></input>
-    <input placeholder="Password" value={newPassword} onChange={handleChange}></input>
-    <input placeholder="Profile picture" value={profilePicture} onChange={handleChange}></input>
-    <button type="submit"></button>
-  </form>
-);
+  return (
+    <form className="form" onSubmit={handleSubmit}>
+      <input
+        className="textInput"
+        placeholder="Username"
+        value={newUserName}
+        onChange={handleChange}
+      ></input>
+      <input
+        className="textInput"
+        placeholder="Password"
+        value={newPassword}
+        onChange={handleChange}
+      ></input>
+      <input
+        className="textInput"
+        placeholder="Profile picture"
+        value={profilePicture}
+        onChange={handleChange}
+      ></input>
+      <button type="submit"></button>
+    </form>
+  );
 };
