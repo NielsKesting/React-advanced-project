@@ -5,16 +5,16 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.header h1 {
+  font-size: 35px;
+  font-weight: bold;
+}
+.header ul {
+  list-style: none;
+}
 
 .headerRight {
   display: flex;
+  align-items: center;
   gap: 10px;
-}
-
-.postCards {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}/*# sourceMappingURL=PageRetriever.css.map */
+}/*# sourceMappingURL=Navigation.css.map */

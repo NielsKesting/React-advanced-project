@@ -1,4 +1,5 @@
-import "./PostCard style/PostCard.css";
+import "../Style/PostCardStyle/PostCard.css";
+import { Link } from "react-router-dom"
 import { users } from "../../data/events.json";
 import { categories } from "../../data/events.json";
 
@@ -47,7 +48,7 @@ export const PostCard = ({ post, onClick }) => {
 
   return (
     <>
-      <button className="postCard" onClick={() => onClick(post)}>
+      <Link className="postCard" to="/event/:eventId">
         <img className="postCardPicture" src={post.image}></img>
         <div className="postCardInfoBox">
           <h2>{post.title}</h2>
@@ -60,7 +61,7 @@ export const PostCard = ({ post, onClick }) => {
             {getTime(post.endTime)}
           </p>
         </div>
-      </button>
+      </Link>
     </>
   );
 };

@@ -1,0 +1,23 @@
+.header {
+    width: 90%;
+    margin: 10px auto 30px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    h1 {
+        font-size: 35px;
+        font-weight: bold;
+
+    }
+    
+    ul{
+        list-style: none;
+    }
+  }
+  
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

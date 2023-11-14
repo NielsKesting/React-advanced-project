@@ -6,6 +6,8 @@ import { EventsPage } from "./pages/EventsPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Root } from "./components/Root";
 import "./main.css";
+import { LoginForm } from "./components/ui/forms/LoginForm";
+import { CreateUserForm } from "./components/ui/forms/CreateUserForm";
 
 const router = createBrowserRouter([
   {
@@ -15,13 +17,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <EventsPage />,
-        // loader: postListLoader,
+      },
+      {
+        path: "/login",
+        element: <LoginForm />,
+      },
+      {
+        path: "/sign-up",
+        element: <CreateUserForm />,
       },
       {
         path: "/event/:eventId",
         element: <EventPage />,
-        // loader: postLoader,
-        // action: addComment,
       },
     ],
   },

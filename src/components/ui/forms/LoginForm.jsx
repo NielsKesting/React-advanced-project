@@ -1,11 +1,24 @@
 import { useState } from "react";
 
-const [activeUser, setActiveUser] = useState("");
+export const LoginForm = () => () => {
+  const [activeUser, setActiveUser] = useState("");
+  const [password, setPassword] = useState("");
 
-export const LoginForm = ({ onChange }) => (
-  <>
-    <input placeholder="Username" onChange={onChange}></input>
-    <input placeholder="Password" onChange={onChange}></input>
+  const handleChange = (event) => {
+    setActiveUser(event.target.value);
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(event);
+  };
+
+return (
+  <form onSubmit={ handleSubmit }>
+    <input placeholder="Username" value={activeUser} onChange={handleChange}></input>
+    <input placeholder="Password" value={password} onChange={handleChange}></input>
     <button type="submit"></button>
-  </>
+  </form>
 );
+};

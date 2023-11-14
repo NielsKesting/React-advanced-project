@@ -1,0 +1,14 @@
+.pageRetriever {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.postCards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}/*# sourceMappingURL=PageRetriever.css.map */

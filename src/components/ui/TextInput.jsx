@@ -1,4 +1,4 @@
-import "./TextInputStyle/TextInput.css";
+import "../Style/TextInputStyle/TextInput.css";
 
 export const TextInput = ({ onChange }) => (
   <input

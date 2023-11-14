@@ -2,10 +2,8 @@ import { useState } from "react";
 import { events } from "../data/events.json";
 
 // UI
-import "./PageRetrieverStyle/PageRetriever.css";
-import { Heading } from "@chakra-ui/react";
+import "./Style/PageRetrieverStyle/PageRetriever.css";
 import { TextInput } from "./ui/TextInput";
-import { Button } from "./ui/Button.jsx";
 import { EventsArray } from "./EventsArray";
 
 export function PageRetriever({ onClick }) {
@@ -29,17 +27,12 @@ export function PageRetriever({ onClick }) {
 
   return (
     <>
-      <div className="header">
-        <Heading>List of events</Heading>
-        <div className="headerRight">
-          <TextInput onChange={handleChange} />
-          <Button btnText="Log in" />
-          <Button btnText="Sign up" />
-        </div>
-      </div>
-      <section className="postCards">
-        <EventsArray onClick={onClick} events={PostCardArray(searchResult)} />
-      </section>
+      <main className="pageRetriever">  
+        <TextInput onChange={handleChange} />
+        <section className="postCards">
+          <EventsArray onClick={onClick} events={PostCardArray(searchResult)} />
+        </section>
+      </main>
     </>
   );
 }
