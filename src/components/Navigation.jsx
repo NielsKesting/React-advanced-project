@@ -1,4 +1,5 @@
 import "../components/Style/NavigationStyle/Navigation.css";
+import "./Style/ButtonStyle/button.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -14,6 +15,11 @@ export const Navigation = () => {
           <li>
             <Link className="button" to="/">
               Events
+            </Link>
+          </li>
+          <li>
+            <Link className="button" to="/create-event">
+              Create event
             </Link>
           </li>
           <li>

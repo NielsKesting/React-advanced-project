@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../../Style/FormStyle/form.css";
 import "../../Style/TextInputStyle/textInput.css";
 
-export const CreateUserForm = () => {
+export const CreateEventForm = () => {
   const [newUserName, setNewUserName] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [profilePicture, setProfilePicture] = useState("");

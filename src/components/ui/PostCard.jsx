@@ -1,9 +1,11 @@
 import "../Style/PostCardStyle/PostCard.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { users } from "../../data/events.json";
 import { categories } from "../../data/events.json";
 
 export const PostCard = ({ post }) => {
+  const { id } = useParams();
+
   const getUser = (createdBy) => {
     const user = users.filter((user) => user.id == createdBy);
     return user[0].name;
@@ -48,7 +50,7 @@ export const PostCard = ({ post }) => {
 
   return (
     <>
-      <Link className="postCard" to="/event/:eventId">
+      <Link className="postCard" to={`event/${id}`}>
         <img className="postCardPicture" src={post.image}></img>
         <div className="postCardInfoBox">
           <h2>{post.title}</h2>
