@@ -22,7 +22,7 @@ export const CreateEventForm = () => {
     <form className="form" onSubmit={handleSubmit}>
       <input
         className="textInput"
-        placeholder="Username"
+        placeholder="Title"
         value={newUserName}
         onChange={handleChange}
       ></input>

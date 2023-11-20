@@ -38,7 +38,9 @@ export const CreateUserForm = () => {
         value={profilePicture}
         onChange={handleChange}
       ></input>
-      <button type="submit"></button>
+      <button className="button" type="submit">
+        Submit
+      </button>
     </form>
   );
 };
