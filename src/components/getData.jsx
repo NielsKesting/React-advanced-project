@@ -1,22 +1,42 @@
-import { useLoaderData } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export function GetData() {
-  const data = useLoaderData();
+  let [users, setUsers] = useState();
 
-  console.log(data);
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const response = await fetch("http://localhost:3000/events");
+      const data = response.json();
+      setUsers(data);
+    };
+    fetchUsers;
+  }, []);
+
+  console.log(users);
+
+  let [events, setEvents] = useState();
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const response = await fetch("http://localhost:3000/events");
+      const data = response.json();
+      setEvents(data);
+    };
+    fetchEvents;
+  }, []);
+
+  console.log(events);
+
+  let [categories, setCategories] = useState();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const response = await fetch("http://localhost:3000/events");
+      const data = response.json();
+      setCategories(data);
+    };
+    fetchCategories;
+  }, []);
+
+  console.log(categories);
 }
-
-export let usersLoader = async () => {
-  const res = await fetch("http://localhost:3000/users");
-  return res.json();
-};
-
-export let eventsLoader = async () => {
-  const res = await fetch("http://localhost:3000/events");
-  return res.json();
-};
-
-export let categoriesLoader = async () => {
-  const res = await fetch("http://localhost:3000/categories");
-  return res.json();
-};

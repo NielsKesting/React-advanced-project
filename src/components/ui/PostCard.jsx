@@ -1,7 +1,15 @@
 import "../Style/PostCardStyle/PostCard.css";
 import { Link, useParams } from "react-router-dom";
+// import { /*GetData,*/ GetUsers, GetCategories } from "../getData";
 import { users } from "../../data/events.json";
 import { categories } from "../../data/events.json";
+
+// const users = () => {
+//   <GetUsers />;
+// };
+// const categories = () => {
+//   <GetCategories />;
+// };
 
 export const PostCard = ({ post }) => {
   const { id } = useParams();

@@ -1,6 +1,7 @@
 import "../components/Style/EventsPageStyle/EventsPage.css";
 import { useState } from "react";
 import { events } from "../data/events.json";
+// import { GetData } from "../components/getData";
 import { TextInput } from "../components/ui/TextInput";
 import { EventsArray } from "../components/EventsArray";
 
