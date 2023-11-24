@@ -1,11 +1,11 @@
 import "../components/Style/EventsPageStyle/EventsPage.css";
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import { TextInput } from "../components/ui/TextInput";
-import { EventsArray } from "../components/EventsArray";
+import { PostCard } from "../components/ui/PostCard";
 
 export function EventsPage() {
-  const events = useLoaderData();
+  const { events } = useLoaderData();
   let [searchResult, setSearchResult] = useState("");
 
   // filter
@@ -42,7 +42,11 @@ export function EventsPage() {
           <TextInput onChange={handleChange} />
         </section>
         <section className="postCards">
-          <EventsArray events={PostCardArray(searchResult)} />
+          {PostCardArray(searchResult).map((event) => (
+            <Link to={`event/${event.id}`} key={event.id}>
+              <PostCard key={event.id} post={event} />
+            </Link>
+          ))}
         </section>
       </main>
     </>
