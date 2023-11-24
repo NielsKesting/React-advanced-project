@@ -7,7 +7,7 @@ export const EventsArray = () => {
   return (
     <>
       {events.map((event) => (
-        <Link to={"/"} key={event.id}>
+        <Link to={"event/:id"} key={event.id}>
           <PostCard key={event.id} post={event} />
         </Link>
       ))}

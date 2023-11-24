@@ -6,11 +6,6 @@ import ReactDOM from "react-dom/client";
 // Page import
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Root } from "./components/Root";
-import {
-  usersLoader,
-  eventsLoader,
-  categoriesLoader,
-} from "./components/GetDatabase";
 import { EventsPage } from "./pages/EventsPage";
 import { EventPage } from "./pages/EventPage";
 import { CreateEventForm } from "./components/ui/forms/CreateEventForm";
@@ -21,14 +16,17 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    loader:
-      // usersLoader,
-      eventsLoader,
-    // categoriesLoader,
     children: [
       {
         path: "/",
         element: <EventsPage />,
+        loader: async () => {
+          // const users = await fetch("http://localhost:3000/users");
+          const events = await fetch("http://localhost:3000/events");
+          // const categories = await fetch("http://localhost:3000/categories");
+
+          return events.json();
+        },
       },
       {
         path: "/event/:id",

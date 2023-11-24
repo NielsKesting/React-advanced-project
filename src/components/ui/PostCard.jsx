@@ -1,6 +1,5 @@
 import "../Style/PostCardStyle/PostCard.css";
-// import { useParams } from "react-router-dom";
-// import { /*GetData,*/ GetUsers, GetCategories } from "../getData";
+import { useParams } from "react-router-dom";
 import { users } from "../../data/events.json";
 import { categories } from "../../data/events.json";
 
