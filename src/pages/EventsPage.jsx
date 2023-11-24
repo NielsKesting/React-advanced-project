@@ -1,11 +1,12 @@
 import "../components/Style/EventsPageStyle/EventsPage.css";
 import { useState } from "react";
-import { events } from "../data/events.json";
-// import { GetData } from "../components/getData";
+import { useLoaderData } from "react-router-dom";
+// import { events } from "../data/events.json";
 import { TextInput } from "../components/ui/TextInput";
 import { EventsArray } from "../components/EventsArray";
 
 export function EventsPage() {
+  const events = useLoaderData();
   let [searchResult, setSearchResult] = useState("");
 
   // filter

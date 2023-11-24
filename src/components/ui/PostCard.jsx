@@ -1,5 +1,5 @@
 import "../Style/PostCardStyle/PostCard.css";
-import { Link, useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 // import { /*GetData,*/ GetUsers, GetCategories } from "../getData";
 import { users } from "../../data/events.json";
 import { categories } from "../../data/events.json";
@@ -12,7 +12,7 @@ import { categories } from "../../data/events.json";
 // };
 
 export const PostCard = ({ post }) => {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   const getUser = (createdBy) => {
     const user = users.filter((user) => user.id == createdBy);
@@ -58,7 +58,7 @@ export const PostCard = ({ post }) => {
 
   return (
     <>
-      <Link className="postCard" to={`event/${id}`}>
+      <div className="postCard">
         <img className="postCardPicture" src={post.image}></img>
         <div className="postCardInfoBox">
           <h2>{post.title}</h2>
@@ -71,7 +71,7 @@ export const PostCard = ({ post }) => {
             {getTime(post.endTime)}
           </p>
         </div>
-      </Link>
+      </div>
     </>
   );
 };

@@ -1,10 +1,15 @@
+import { Link, useLoaderData } from "react-router-dom";
 import { PostCard } from "../components/ui/PostCard";
 
-export const EventsArray = ({ events, onClick }) => {
+export const EventsArray = () => {
+  const events = useLoaderData();
+
   return (
     <>
       {events.map((event) => (
-        <PostCard key={event.id} post={event} onClick={onClick} />
+        <Link to={"/"} key={event.id}>
+          <PostCard key={event.id} post={event} />
+        </Link>
       ))}
     </>
   );
