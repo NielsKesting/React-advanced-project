@@ -1,17 +1,12 @@
 import "../Style/PostCardStyle/PostCard.css";
-import { useParams } from "react-router-dom";
-import { users } from "../../data/events.json";
-import { categories } from "../../data/events.json";
-
-// const users = () => {
-//   <GetUsers />;
-// };
-// const categories = () => {
-//   <GetCategories />;
-// };
+import { useLoaderData } from "react-router-dom";
+// import { useParams } from "react-router-dom";
+// import { users } from "../../data/events.json";
+// import { categories } from "../../data/events.json";
 
 export const PostCard = ({ post }) => {
   // const { id } = useParams();
+  const { users, categories } = useLoaderData();
 
   const getUser = (createdBy) => {
     const user = users.filter((user) => user.id == createdBy);

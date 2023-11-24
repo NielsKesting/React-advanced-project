@@ -2,6 +2,7 @@ import "./main.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { GetData } from "./components/GetData";
 
 // Page import
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -20,17 +21,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <EventsPage />,
-        loader: async () => {
-          // const users = await fetch("http://localhost:3000/users");
-          const events = await fetch("http://localhost:3000/events");
-          // const categories = await fetch("http://localhost:3000/categories");
-
-          return events.json();
-        },
+        loader: GetData,
       },
       {
         path: "/event/:id",
         element: <EventPage />,
+        loader: GetData,
       },
       {
         path: "/create-event",

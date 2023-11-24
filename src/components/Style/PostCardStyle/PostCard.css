@@ -35,7 +35,7 @@
 
 @media (min-width: 1200px) {
   .postCard {
-    width: 350px;
+    width: 330px;
   }
   .postCard .postCardPicture {
     height: 150px;

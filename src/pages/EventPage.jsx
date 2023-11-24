@@ -1,11 +1,9 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-// import { PostCard } from "../components/ui/PostCard";
-// import { events } from "../data/events.json";
+import { useLoaderData, useParams } from "react-router-dom";
 
 export const EventPage = () => {
+  // const { events } = useLoaderData();
   const { id } = useParams();
-  console.log;
 
   return (
     <>
