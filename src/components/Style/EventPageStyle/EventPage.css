@@ -27,12 +27,16 @@
 .madeBy {
   grid-area: "madeBy";
   text-align: center;
-  background-color: white;
-  height: 375px;
-  padding: 25px;
-  box-shadow: 0px 3px 5px lightgrey;
   rotate: 5deg;
+}
+.madeBy img {
+  background-color: white;
+  box-shadow: 0px 3px 5px lightgrey;
+  padding: 25px 25px 0px 25px;
 }
 .madeBy h1 {
   font-size: 30px;
+  background-color: white;
+  padding: 5px 0px;
+  box-shadow: 0px 3px 5px lightgrey;
 }/*# sourceMappingURL=EventPage.css.map */

@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { data } from "react-router-dom"
+import { ActiveUserContext } from "../../ActiveUserContext";
 import "../../Style/FormStyle/form.css";
 import "../../Style/TextInputStyle/textInput.css";
 
 export const LoginForm = () => {
+  // Get login data
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
 
