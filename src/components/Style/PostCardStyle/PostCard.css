@@ -21,7 +21,7 @@
 
 .postCardInfoBox {
   border-radius: 0px 0px 5px 5px;
-  height: 32vh;
+  height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -35,7 +35,7 @@
 
 @media (min-width: 1200px) {
   .postCard {
-    width: 330px;
+    width: 300px;
   }
   .postCard .postCardPicture {
     height: 150px;

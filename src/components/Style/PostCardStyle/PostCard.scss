@@ -27,7 +27,7 @@ $highlightCorner: 5px;
     font-weight: bold;
   }
   border-radius: 0px 0px $postCardCorner $postCardCorner;
-  height: 32vh;
+  height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -37,7 +37,7 @@ $highlightCorner: 5px;
 
 @media (min-width: 1200px) {
   .postCard {
-    width: 330px;
+    width: 300px;
 
     .postCardPicture {
       height: 150px;

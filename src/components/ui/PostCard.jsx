@@ -2,12 +2,7 @@ import "../Style/PostCardStyle/PostCard.css";
 import { useLoaderData } from "react-router-dom";
 
 export const PostCard = ({ post }) => {
-  const { users, categories } = useLoaderData();
-
-  const getUser = (createdBy) => {
-    const user = users.filter((user) => user.id == createdBy);
-    return user[0].name;
-  };
+  const { categories } = useLoaderData();
 
   const getCategories = (postCategories) => {
     if (postCategories.length == 3) {
@@ -52,9 +47,7 @@ export const PostCard = ({ post }) => {
         <img className="postCardPicture" src={post.image}></img>
         <div className="postCardInfoBox">
           <h2>{post.title}</h2>
-          <p>Posted by: {getUser(post.createdBy)}</p>
           <p>{post.description}</p>
-          <p>Location: {post.location}</p>
           <p>{getCategories(post.categoryIds)}</p>
           <p>
             Starts: {getTime(post.startTime)} <br></br> Ends: {""}

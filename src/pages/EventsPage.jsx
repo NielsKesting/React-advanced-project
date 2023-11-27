@@ -6,21 +6,37 @@ import { PostCard } from "../components/ui/PostCard";
 
 export function EventsPage() {
   const { events } = useLoaderData();
+  let [radioState, setRadioState] = useState(0);
   let [searchResult, setSearchResult] = useState("");
 
-  // filter
-  let PostCardArray = (searchResult) => {
-    if (searchResult.length == 0) {
+  // filters
+  let categoryFilter = () => {
+    if (radioState == "0") {
       return events;
     } else {
       let filteredList = events.filter((object) =>
+        object.categoryIds.includes(parseInt(radioState))
+      );
+      return filteredList;
+    }
+  };
+
+  let PostCardArray = (searchResult) => {
+    let eventArray = categoryFilter();
+    if (searchResult.length == 0) {
+      return eventArray;
+    } else {
+      let filteredList = eventArray.filter((object) =>
         object.title.toLowerCase().includes(searchResult.toLowerCase())
       );
       return filteredList;
     }
   };
 
-  const handleChange = (event) => {
+  const handleRadioInput = (event) => {
+    setRadioState(event.target.value);
+  };
+  const handleTextInput = (event) => {
     setSearchResult(event.target.value);
   };
 
@@ -30,16 +46,40 @@ export function EventsPage() {
         <section className="postCardsHeader">
           <div className="filters">
             <p>Categories:</p>
-            <input type="radio" id="all" name="categories" />
-            <label>All</label>
-            <input type="radio" id="sports" name="categories" />
-            <label>Sports</label>
-            <input type="radio" id="games" name="categories" />
-            <label>Games</label>
-            <input type="radio" id="relaxation" name="categories" />
-            <label>Relaxation</label>
+            <input
+              type="radio"
+              name="categories"
+              value={"0"}
+              id="all"
+              onChange={handleRadioInput}
+            />
+            <label htmlFor="all">All</label>
+            <input
+              type="radio"
+              name="categories"
+              value={"1"}
+              id="sports"
+              onChange={handleRadioInput}
+            />
+            <label htmlFor="sports">Sports</label>
+            <input
+              type="radio"
+              name="categories"
+              value={"2"}
+              id="games"
+              onChange={handleRadioInput}
+            />
+            <label htmlFor="games">Games</label>
+            <input
+              type="radio"
+              name="categories"
+              value={"3"}
+              id="relaxation"
+              onChange={handleRadioInput}
+            />
+            <label htmlFor="relaxation">Relaxation</label>
           </div>
-          <TextInput onChange={handleChange} />
+          <TextInput onChange={handleTextInput} />
         </section>
         <section className="postCards">
           {PostCardArray(searchResult).map((event) => (

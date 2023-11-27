@@ -3,33 +3,30 @@ import "../../Style/FormStyle/form.css";
 import "../../Style/TextInputStyle/textInput.css";
 
 export const LoginForm = () => {
-  let [loginData, setLoginData] = useState({
-    name: "",
-    password: "",
-  });
+  let [username, setUsername] = useState("");
+  let [password, setPassword] = useState("");
 
-  const handleChange = (event) => {
-    setLoginData(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
+  const handleLoginSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
+    const loginData = { username, password };
+    return loginData;
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleLoginSubmit}>
       <input
         className="textInput"
         placeholder="Username"
-        value={loginData.name}
-        onChange={handleChange}
+        required
+        value={username}
+        onChange={(username) => setUsername(username.target.value)}
       ></input>
       <input
         className="textInput"
         placeholder="Password"
-        value={loginData.password}
-        onChange={handleChange}
+        required
+        value={password}
+        onChange={(password) => setPassword(password.target.value)}
       ></input>
       <button className="button" type="submit">
         Submit
