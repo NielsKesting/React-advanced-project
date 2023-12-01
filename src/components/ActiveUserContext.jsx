@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const ActiveUserContext = createContext({ username: "", password: "" });
+export const ActiveUserContext = createContext([]);

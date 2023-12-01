@@ -5,8 +5,18 @@ import { useState, useContext } from "react";
 import { ActiveUserContext } from "./ActiveUserContext";
 
 export const Navigation = () => {
-  let [loggedIn, updateLoggedIn] = useState(1);
   const activeUser = useContext(ActiveUserContext);
+  let [loggedIn, updateLoggedIn] = useState(0);
+
+  console.log("hier");
+  console.log(loggedIn);
+
+  if (loggedIn == 0) {
+    if (activeUser[0].length != 0) {
+      updateLoggedIn(1);
+    }
+  }
+
   console.log("Dit komt van de navigatie");
   console.log(activeUser);
 

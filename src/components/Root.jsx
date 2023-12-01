@@ -5,18 +5,12 @@ import { Navigation } from "./Navigation";
 import { Box } from "@chakra-ui/react";
 
 export const Root = () => {
-  const [activeUserName, setActiveUserName] = useState("Niels");
-  const [activeUserPassword, setActiveUserPassword] = useState("Kesting");
+  const [activeUser, setActiveUser] = useState([]);
 
   return (
     <>
       <Box>
-        <ActiveUserContext.Provider
-          value={{
-            username: [activeUserName, setActiveUserName],
-            password: [activeUserPassword, setActiveUserPassword],
-          }}
-        >
+        <ActiveUserContext.Provider value={[activeUser, setActiveUser]}>
           <Navigation />
           <Outlet />
         </ActiveUserContext.Provider>
