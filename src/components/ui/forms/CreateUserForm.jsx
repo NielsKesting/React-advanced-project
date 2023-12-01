@@ -3,19 +3,30 @@ import "../../Style/FormStyle/form.css";
 import "../../Style/TextInputStyle/textInput.css";
 
 export const CreateUserForm = () => {
-  const [newUserName, setNewUserName] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [profilePicture, setProfilePicture] = useState("");
+  const [name, setNewUserName] = useState("");
+  const [password, setNewPassword] = useState("");
+  const [image, setProfilePicture] = useState("");
 
-  const handleChange = (event) => {
-    setNewUserName(event.target.value);
-    setNewPassword(event.target.value);
-    setProfilePicture(event.target.value);
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log(event);
+  // };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const user = {
+      name,
+      password,
+      image,
+    };
+
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    }).then(() => {
+      console.log("gelukt");
+    });
   };
 
   return (
@@ -23,20 +34,22 @@ export const CreateUserForm = () => {
       <input
         className="textInput"
         placeholder="Username"
-        value={newUserName}
-        onChange={handleChange}
+        value={name}
+        onChange={(newUsername) => setNewUserName(newUsername.target.value)}
       ></input>
       <input
         className="textInput"
         placeholder="Password"
-        value={newPassword}
-        onChange={handleChange}
+        value={password}
+        onChange={(newPassword) => setNewPassword(newPassword.target.value)}
       ></input>
       <input
         className="textInput"
         placeholder="Profile picture"
-        value={profilePicture}
-        onChange={handleChange}
+        value={image}
+        onChange={(profilePicture) =>
+          setProfilePicture(profilePicture.target.value)
+        }
       ></input>
       <button className="button" type="submit">
         Submit

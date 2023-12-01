@@ -1,3 +1,3 @@
-import  { createContext } from "react"
+import { createContext } from "react";
 
-export const ActiveUserContext = createContext({});
+export const ActiveUserContext = createContext({ username: "", password: "" });

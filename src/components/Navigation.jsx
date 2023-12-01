@@ -2,12 +2,13 @@ import "../components/Style/NavigationStyle/Navigation.css";
 import "./Style/ButtonStyle/button.css";
 import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
-import { ActiveUserContext } from "./ActiveUserContext"
+import { ActiveUserContext } from "./ActiveUserContext";
 
 export const Navigation = () => {
   let [loggedIn, updateLoggedIn] = useState(1);
   const activeUser = useContext(ActiveUserContext);
-  // console.log(activeUser)
+  console.log("Dit komt van de navigatie");
+  console.log(activeUser);
 
   if (loggedIn === 1) {
     return (
