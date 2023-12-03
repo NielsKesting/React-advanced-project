@@ -60,33 +60,7 @@ export const CreateEventForm = () => {
         value={image}
         onChange={(image) => setImage(image.target.value)}
       ></input>
-      <div className="filters">
-        <p>Categories:</p>
-        <input
-          type="checkbox"
-          name="categories"
-          value={"1"}
-          id="sports"
-          onChange={handleCategoryInput}
-        />
-        <label htmlFor="sports">Sports</label>
-        <input
-          type="checkbox"
-          name="categories"
-          value={"2"}
-          id="games"
-          onChange={handleCategoryInput}
-        />
-        <label htmlFor="games">Games</label>
-        <input
-          type="checkbox"
-          name="categories"
-          value={"3"}
-          id="relaxation"
-          onChange={handleCategoryInput}
-        />
-        <label htmlFor="relaxation">Relaxation</label>
-      </div>
+
       <input
         className="textInput"
         placeholder="Location"
@@ -108,6 +82,35 @@ export const CreateEventForm = () => {
         value={endTime}
         onChange={(endTime) => setEndTime(endTime.target.value)}
       ></input>
+      <div className="categoriesContainer">
+        <p>Categories:</p>
+        <div className="categories">
+          <label htmlFor="sports ">Sports</label>
+          <input
+            type="checkbox"
+            name="categories"
+            value={1}
+            id="sports"
+            onChange={handleCategoryInput}
+          />
+          <label htmlFor="games ">Games</label>
+          <input
+            type="checkbox"
+            name="categories"
+            value={2}
+            id="games"
+            onChange={handleCategoryInput}
+          />
+          <label htmlFor="relaxation ">Relaxation</label>
+          <input
+            type="checkbox"
+            name="categories"
+            value={3}
+            id="relaxation"
+            onChange={handleCategoryInput}
+          />
+        </div>
+      </div>
       <button className="button" type="submit">
         Submit
       </button>

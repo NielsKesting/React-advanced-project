@@ -30,6 +30,10 @@
   rotate: 5deg;
 }
 .madeBy img {
+  width: 420px;
+  height: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
   background-color: white;
   box-shadow: 0px 3px 5px lightgrey;
   padding: 25px 25px 0px 25px;

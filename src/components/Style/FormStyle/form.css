@@ -6,4 +6,13 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.categoriesContainer {
+  width: 250px;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-between;
 }/*# sourceMappingURL=form.css.map */

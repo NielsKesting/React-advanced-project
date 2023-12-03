@@ -5,12 +5,9 @@ import "../../Style/TextInputStyle/textInput.css";
 export const CreateUserForm = () => {
   const [name, setNewUserName] = useState("");
   const [password, setNewPassword] = useState("");
-  const [image, setProfilePicture] = useState("");
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   console.log(event);
-  // };
+  const [image, setProfilePicture] = useState(
+    "https://images.app.goo.gl/YG17szKvGdhK1bWv6"
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,12 +31,14 @@ export const CreateUserForm = () => {
       <input
         className="textInput"
         placeholder="Username"
+        required
         value={name}
         onChange={(newUsername) => setNewUserName(newUsername.target.value)}
       ></input>
       <input
         className="textInput"
         placeholder="Password"
+        required
         value={password}
         onChange={(newPassword) => setNewPassword(newPassword.target.value)}
       ></input>
