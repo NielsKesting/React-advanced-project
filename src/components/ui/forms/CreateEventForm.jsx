@@ -1,27 +1,58 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ActiveUserContext } from "../../ActiveUserContext";
 import "../../Style/FormStyle/form.css";
 import "../../Style/TextInputStyle/textInput.css";
+import { Checkbox } from "@chakra-ui/react";
 
 export const CreateEventForm = () => {
+  const getActiveUser = useContext(ActiveUserContext)
+  const activeUser = getActiveUser[0]
+
+  const createdBy = activeUser[0].id
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [location, setLocation] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
+  const [startDate, setStartDate] = useState('');
+  const [sTime, setStartTime] = useState('');
+  const startTime = `${startDate}T${sTime}`;
+  const [endDate, setEndDate] = useState('');
+  const [eTime, setEndTime] = useState('');
+  const endTime = `${endDate}T${eTime}`;
 
-  const handleCategoryInput = () => {
-    console.log("werkt");
-  };
+  const categoryIds = [];
+  const [checkedSports, setCheckedSports] = useState(false);
+  const handleCheckedSports = () => {
+      setCheckedSports(!checkedSports);
+    }
+    if (checkedSports != false) {
+      categoryIds.push(1)
+    }  
+
+  const [checkedGames, setCheckedGames] = useState(false)
+  const handleCheckedGames = () => {
+      setCheckedGames(!checkedGames)
+  }
+  if (checkedGames != false) {
+    categoryIds.push(2)
+  }
+
+  const [checkedRelaxation, setCheckedRelaxation] = useState(false)
+  const handleCheckedRelaxation = () => {
+    setCheckedRelaxation(!checkedGames)
+  }
+  if (checkedRelaxation != false) {
+    categoryIds.push(3)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const event = {
-      createdBy: 1,
+      createdBy,
       title,
       description,
       image,
-      categoryIds: [1],
+      categoryIds,
       location,
       startTime,
       endTime,
@@ -70,45 +101,50 @@ export const CreateEventForm = () => {
       ></input>
       <input
         className="textInput"
-        placeholder="Start time"
+        placeholder="Start-date yyyy-mm-dd"
         required
-        value={startTime}
-        onChange={(startTime) => setStartTime(startTime.target.value)}
+        value={startDate}
+        onChange={(startDate) => setStartDate(startDate.target.value)}
       ></input>
       <input
         className="textInput"
-        placeholder="End time"
+        placeholder="Start-time 00:00"
         required
-        value={endTime}
-        onChange={(endTime) => setEndTime(endTime.target.value)}
+        value={sTime}
+        onChange={(sTime) => setStartTime(sTime.target.value)}
+      ></input>
+      <input
+        className="textInput"
+        placeholder="End-date yyyy-mm-dd"
+        required
+        value={endDate}
+        onChange={(endDate) => setEndDate(endDate.target.value)}
+      ></input>
+       <input
+        className="textInput"
+        placeholder="End-time 00:00"
+        required
+        value={eTime}
+        onChange={(eTime) => setEndTime(eTime.target.value)}
       ></input>
       <div className="categoriesContainer">
         <p>Categories:</p>
         <div className="categories">
-          <label htmlFor="sports ">Sports</label>
-          <input
-            type="checkbox"
-            name="categories"
-            value={1}
-            id="sports"
-            onChange={handleCategoryInput}
-          />
-          <label htmlFor="games ">Games</label>
-          <input
-            type="checkbox"
-            name="categories"
-            value={2}
-            id="games"
-            onChange={handleCategoryInput}
-          />
-          <label htmlFor="relaxation ">Relaxation</label>
-          <input
-            type="checkbox"
-            name="categories"
-            value={3}
-            id="relaxation"
-            onChange={handleCategoryInput}
-          />
+          <label>Sports</label>
+          <Checkbox
+            label="sports"
+            value={checkedSports}
+            onChange={handleCheckedSports} />
+          <label>Games</label>
+          <Checkbox
+            label="games"
+            value={checkedGames}
+            onChange={handleCheckedGames} />
+          <label>Relaxation</label>
+          <Checkbox
+            label="relaxation"
+            value={checkedRelaxation}
+            onChange={handleCheckedRelaxation} />
         </div>
       </div>
       <button className="button" type="submit">

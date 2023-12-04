@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { ActiveUserContext } from "../../ActiveUserContext";
 import "../../Style/FormStyle/form.css";
 import "../../Style/TextInputStyle/textInput.css";
@@ -7,6 +7,7 @@ import "../../Style/TextInputStyle/textInput.css";
 export const LoginForm = () => {
   const { users } = useLoaderData();
   const [activeUser, setActiveUser] = useContext(ActiveUserContext);
+  const navigateTo = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,7 +18,8 @@ export const LoginForm = () => {
         object.name.includes(username) && object.password.includes(password)
     );
     setActiveUser(user);
-  };
+    navigateTo("/");
+  }
 
   return (
     <form className="form" onSubmit={handleLoginSubmit}>

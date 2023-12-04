@@ -12,6 +12,7 @@ import { EventPage } from "./pages/EventPage";
 import { CreateEventForm } from "./components/ui/forms/CreateEventForm";
 import { LoginForm } from "./components/ui/forms/LoginForm";
 import { CreateUserForm } from "./components/ui/forms/CreateUserForm";
+import { EditProfile } from "./components/ui/forms/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <CreateUserForm />,
+      },
+      {
+        path: "/profile/:id",
+        element: <EditProfile />,
+        loader: GetData,
       },
     ],
   },

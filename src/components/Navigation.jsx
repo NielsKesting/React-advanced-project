@@ -5,22 +5,17 @@ import { useState, useContext } from "react";
 import { ActiveUserContext } from "./ActiveUserContext";
 
 export const Navigation = () => {
-  const activeUser = useContext(ActiveUserContext);
+  const getActiveUser = useContext(ActiveUserContext);
+  const activeUser = getActiveUser[0]
   let [loggedIn, updateLoggedIn] = useState(0);
 
-  console.log("hier");
-  console.log(loggedIn);
-
   if (loggedIn == 0) {
-    if (activeUser[0].length != 0) {
+    if (activeUser[0].id != 0) {
       updateLoggedIn(1);
     }
   }
 
-  console.log("Dit komt van de navigatie");
-  console.log(activeUser);
-
-  if (loggedIn === 1) {
+  if (activeUser[0].id != 0) {
     return (
       <nav className="header">
         <h1>Event board</h1>
@@ -41,7 +36,7 @@ export const Navigation = () => {
             </button>
           </li>
           <li>
-            <Link className="button" to="edit-profile">
+            <Link className="button">
               Profile
             </Link>
           </li>

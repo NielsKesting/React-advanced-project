@@ -23,6 +23,11 @@
 .page .infoBox {
   padding: 25px 40px;
 }
+.page .buttonContainer {
+  display: flex;
+  padding-top: 10px;
+  gap: 10px;
+}
 
 .madeBy {
   grid-area: "madeBy";

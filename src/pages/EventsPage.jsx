@@ -46,38 +46,40 @@ export function EventsPage() {
         <section className="postCardsHeader">
           <div className="filters">
             <p>Categories:</p>
+            <label htmlFor="all">
             <input
               type="radio"
               name="categories"
               value={"0"}
               id="all"
               onChange={handleRadioInput}
-            />
-            <label htmlFor="all">All</label>
+            /> All
+            </label>
+            <label htmlFor="sports">
             <input
               type="radio"
               name="categories"
               value={"1"}
               id="sports"
               onChange={handleRadioInput}
-            />
-            <label htmlFor="sports">Sports</label>
+            /> Sports</label>
+            <label htmlFor="games">
             <input
               type="radio"
               name="categories"
               value={"2"}
               id="games"
               onChange={handleRadioInput}
-            />
-            <label htmlFor="games">Games</label>
+            /> Games</label>
+            <label htmlFor="relaxation">
             <input
               type="radio"
               name="categories"
               value={"3"}
               id="relaxation"
               onChange={handleRadioInput}
-            />
-            <label htmlFor="relaxation">Relaxation</label>
+            /> Relaxation
+            </label>
           </div>
           <TextInput onChange={handleTextInput} />
         </section>

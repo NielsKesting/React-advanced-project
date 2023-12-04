@@ -5,9 +5,7 @@ import "../../Style/TextInputStyle/textInput.css";
 export const CreateUserForm = () => {
   const [name, setNewUserName] = useState("");
   const [password, setNewPassword] = useState("");
-  const [image, setProfilePicture] = useState(
-    "https://images.app.goo.gl/YG17szKvGdhK1bWv6"
-  );
+  const [image, setProfilePicture] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +20,7 @@ export const CreateUserForm = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     }).then(() => {
-      console.log("gelukt");
+      window.alert("gelukt");
     });
   };
 
