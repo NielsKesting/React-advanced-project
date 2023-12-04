@@ -1,5 +1,6 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams, useContext } from "react-router-dom";
+import { ActiveUserContext } from "../components/ActiveUserContext";
 import "../components/Style/EventPageStyle/EventPage.css";
 
 export const EventPage = () => {
@@ -9,6 +10,19 @@ export const EventPage = () => {
   // Get current data
   const getCurrentEvent = events.filter((event) => event.id == parseInt(id));
   const currentEvent = getCurrentEvent[0];
+  const activeUser = useContext(ActiveUserContext[0])
+
+  console.log(activeUser)
+  const showDeleteEdit = () => {
+  if (currentEvent.id == activeUser.id){
+    return (
+      <>
+        <input className="button">Delete</input>
+        <input className="button">Edit</input>
+      </>
+    )
+  }
+  }
 
   const getMadeBy = users.filter(
     (user) => user.id == parseInt(currentEvent.createdBy)
@@ -42,6 +56,7 @@ export const EventPage = () => {
           <img src={madeBy.image}></img>
           <h1>{madeBy.name}</h1>
         </div>
+        {/* {showDeleteEdit()} */}
       </div>
     </>
   );
