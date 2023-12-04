@@ -1,18 +1,24 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData, useParams, useNavigate } from "react-router-dom";
 import { ActiveUserContext } from "../components/ActiveUserContext";
+import { EditEventForm } from "../components/ui/forms/EditEventForm";
 import "../components/Style/EventPageStyle/EventPage.css";
 
 export const EventPage = () => {
   const { users, events, categories } = useLoaderData();
+  const [editMode, setEditMode] = useState(false);
   const { id } = useParams();
   const navigateTo = useNavigate();
+
+  const handleEditMode = () => {
+    setEditMode((current) => !current);
+  };
 
   // Get current data
   const getCurrentEvent = events.filter((event) => event.id == parseInt(id));
   const currentEvent = getCurrentEvent[0];
-  const getActiveUser = useContext(ActiveUserContext)
-  const activeUser = getActiveUser[0]
+  const getActiveUser = useContext(ActiveUserContext);
+  const activeUser = getActiveUser[0];
 
   const getMadeBy = users.filter(
     (user) => user.id == parseInt(currentEvent.createdBy)
@@ -30,38 +36,40 @@ export const EventPage = () => {
 
   const handleDelete = () => {
     fetch(`http://localhost:3000/events/${id}`, {
-      method: 'DELETE'
-    })
-    navigateTo("/");
-  }
+      method: "DELETE",
+    }).then(() => {
+      window.alert("Event verwijdert");
+      navigateTo("/");
+    });
+  };
 
-  if (currentEvent.createdBy === activeUser[0].id){
-    return (
-      <>
-        <div className="eventPage">
-          <div className="page">
-            <img src={currentEvent.image}></img>
-            <div className="infoBox">
-              <h1>{currentEvent.title}</h1>
-              <p>{currentEvent.description}</p>
-              <br />
-              <p>Starts at: {getTime(currentEvent.startTime)}</p>
-              <p>Ends at: {getTime(currentEvent.endTime)}</p>
-              <p>Categorie: {currentCategories.name}</p>
-              <div className="buttonContainer">
-                <button className="button" onClick={handleDelete}>Delete</button>
-                <button className="button" type="button">Edit</button>
+  if (currentEvent.createdBy === activeUser[0].id) {
+    if (editMode == true) {
+      return (
+        <>
+          <div className="eventPage">
+            <div className="page">
+              <img src={currentEvent.image}></img>
+              <div className="infoBox">
+                <EditEventForm eventId={id} />
+                <div className="buttonContainer">
+                  <button className="button" onClick={handleDelete}>
+                    Delete
+                  </button>
+                  <button className="button" onClick={handleEditMode}>
+                    Edit
+                  </button>
+                </div>
               </div>
             </div>
+            <div className="madeBy">
+              <img src={madeBy.image}></img>
+              <h1>{madeBy.name}</h1>
+            </div>
           </div>
-          <div className="madeBy">
-            <img src={madeBy.image}></img>
-            <h1>{madeBy.name}</h1>
-          </div>
-        </div>
-      </>
-    )
-  } else {
+        </>
+      );
+    } else {
       return (
         <>
           <div className="eventPage">
@@ -74,6 +82,14 @@ export const EventPage = () => {
                 <p>Starts at: {getTime(currentEvent.startTime)}</p>
                 <p>Ends at: {getTime(currentEvent.endTime)}</p>
                 <p>Categorie: {currentCategories.name}</p>
+                <div className="buttonContainer">
+                  <button className="button" onClick={handleDelete}>
+                    Delete
+                  </button>
+                  <button className="button" onClick={handleEditMode}>
+                    Edit
+                  </button>
+                </div>
               </div>
             </div>
             <div className="madeBy">
@@ -82,6 +98,29 @@ export const EventPage = () => {
             </div>
           </div>
         </>
-      )   
-  }  
+      );
+    }
+  } else {
+    return (
+      <>
+        <div className="eventPage">
+          <div className="page">
+            <img src={currentEvent.image}></img>
+            <div className="infoBox">
+              <h1>{currentEvent.title}</h1>
+              <p>{currentEvent.description}</p>
+              <br />
+              <p>Starts at: {getTime(currentEvent.startTime)}</p>
+              <p>Ends at: {getTime(currentEvent.endTime)}</p>
+              <p>Categorie: {currentCategories.name}</p>
+            </div>
+          </div>
+          <div className="madeBy">
+            <img src={madeBy.image}></img>
+            <h1>{madeBy.name}</h1>
+          </div>
+        </div>
+      </>
+    );
+  }
 };

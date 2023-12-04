@@ -5,9 +5,13 @@ import { useState, useContext } from "react";
 import { ActiveUserContext } from "./ActiveUserContext";
 
 export const Navigation = () => {
-  const getActiveUser = useContext(ActiveUserContext);
-  const activeUser = getActiveUser[0]
+  const [activeUser, setActiveUser] = useContext(ActiveUserContext);
   let [loggedIn, updateLoggedIn] = useState(0);
+
+  const handleLogout = () => {
+    updateLoggedIn(0);
+    setActiveUser([{ id: 0 }]);
+  };
 
   if (loggedIn == 0) {
     if (activeUser[0].id != 0) {
@@ -31,12 +35,12 @@ export const Navigation = () => {
             </Link>
           </li>
           <li>
-            <button type="button" className="button" onClick={updateLoggedIn}>
+            <button type="button" className="button" onClick={handleLogout}>
               Log out
             </button>
           </li>
           <li>
-            <Link className="button">
+            <Link className="button" to={`profile/${activeUser[0].id}`}>
               Profile
             </Link>
           </li>

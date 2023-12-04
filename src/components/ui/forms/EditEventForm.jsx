@@ -1,14 +1,12 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { ActiveUserContext } from "../../ActiveUserContext";
-import "../../Style/FormStyle/form.css";
+import "../../Style/EditFormStyle/form.css";
 import "../../Style/TextInputStyle/textInput.css";
 import { Checkbox } from "@chakra-ui/react";
 
-export const CreateEventForm = () => {
+export const EditEventForm = () => {
   const getActiveUser = useContext(ActiveUserContext);
   const activeUser = getActiveUser[0];
-  const navigateTo = useNavigate();
 
   const createdBy = activeUser[0].id;
   const [title, setTitle] = useState("");
@@ -60,13 +58,12 @@ export const CreateEventForm = () => {
       endTime,
     };
 
-    fetch("http://localhost:3000/events", {
-      method: "POST",
+    fetch(`http://localhost:3000/events/${eventId}`, {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(event),
     }).then(() => {
-      window.alert("Event gepost");
-      navigateTo("/");
+      window.alert("Event edited");
     });
   };
 

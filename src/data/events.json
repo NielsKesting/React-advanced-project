@@ -19,9 +19,9 @@
       "id": 3
     },
     {
-      "name": "Test",
-      "password": "Test",
-      "image": "Test",
+      "name": "test",
+      "password": "test",
+      "image": "/",
       "id": 4
     }
   ],
@@ -82,7 +82,7 @@
     {
       "createdBy": 3,
       "title": "Puppies aaien",
-      "description": "Als er een hond aanwezig is",
+      "description": "Als er een hond aanwezig is.",
       "image": "https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_22/3479356/210601-main-pups-canine-companions-for-independence-ew-113p.jpg",
       "categoryIds": [
         3
@@ -91,6 +91,19 @@
       "startTime": "2023-12-04T00:00",
       "endTime": "2023-12-04T23:59",
       "id": 5
+    },
+    {
+      "createdBy": 4,
+      "title": "test",
+      "description": "test",
+      "image": "/",
+      "categoryIds": [
+        3
+      ],
+      "location": "test",
+      "startTime": "0000-00-00T00:00",
+      "endTime": "0000-00-01T23:59",
+      "id": 6
     }
   ],
   "categories": [

@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../Style/FormStyle/form.css";
 import "../../Style/TextInputStyle/textInput.css";
 
 export const CreateUserForm = () => {
+  const navigateTo = useNavigate();
   const [name, setNewUserName] = useState("");
   const [password, setNewPassword] = useState("");
   const [image, setProfilePicture] = useState("");
@@ -21,6 +23,7 @@ export const CreateUserForm = () => {
       body: JSON.stringify(user),
     }).then(() => {
       window.alert("gelukt");
+      navigateTo("/");
     });
   };
 

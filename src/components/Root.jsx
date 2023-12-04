@@ -5,7 +5,7 @@ import { Navigation } from "./Navigation";
 import { Box } from "@chakra-ui/react";
 
 export const Root = () => {
-  const [activeUser, setActiveUser] = useState([{id: 0}])
+  const [activeUser, setActiveUser] = useState([{ id: 0 }]);
 
   return (
     <>
