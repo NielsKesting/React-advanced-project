@@ -1,23 +1,27 @@
 import { useState, useContext } from "react";
+import { useParams } from "react-router-dom"
 import { ActiveUserContext } from "../../ActiveUserContext";
 import "../../Style/EditFormStyle/form.css";
 import "../../Style/TextInputStyle/textInput.css";
 import { Checkbox } from "@chakra-ui/react";
 
-export const EditEventForm = () => {
+export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
   const getActiveUser = useContext(ActiveUserContext);
   const activeUser = getActiveUser[0];
+  const currentEvent = getCurrentEvent.currentEvent;
+  const id = useParams()
+  const getId = id.id
 
   const createdBy = activeUser[0].id;
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
-  const [location, setLocation] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [sTime, setStartTime] = useState("");
+  const [title, setTitle] = useState(currentEvent.title);
+  const [description, setDescription] = useState(currentEvent.description);
+  const [image, setImage] = useState(currentEvent.image);
+  const [location, setLocation] = useState(currentEvent.location);
+  const [startDate, setStartDate] = useState(currentEvent.startTime.substring(0, 10));
+  const [sTime, setStartTime] = useState(currentEvent.startTime.substring(11, 16));
   const startTime = `${startDate}T${sTime}`;
-  const [endDate, setEndDate] = useState("");
-  const [eTime, setEndTime] = useState("");
+  const [endDate, setEndDate] = useState(currentEvent.endTime.substring(0, 10));
+  const [eTime, setEndTime] = useState(currentEvent.endTime.substring(11, 16));
   const endTime = `${endDate}T${eTime}`;
 
   const categoryIds = [];
@@ -57,9 +61,8 @@ export const EditEventForm = () => {
       startTime,
       endTime,
     };
-
-    fetch(`http://localhost:3000/events/${eventId}`, {
-      method: "PUT",
+    fetch(`http://localhost:3000/events/${getId}`, {
+      method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(event),
     }).then(() => {
@@ -68,7 +71,7 @@ export const EditEventForm = () => {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="editForm" onSubmit={handleSubmit}>
       <input
         className="textInput"
         placeholder="Title"
@@ -127,32 +130,35 @@ export const EditEventForm = () => {
         value={eTime}
         onChange={(eTime) => setEndTime(eTime.target.value)}
       ></input>
-      <div className="categoriesContainer">
-        <p>Categories:</p>
-        <div className="categories">
-          <label>Sports</label>
-          <Checkbox
-            label="sports"
-            value={checkedSports}
-            onChange={handleCheckedSports}
-          />
-          <label>Games</label>
-          <Checkbox
-            label="games"
-            value={checkedGames}
-            onChange={handleCheckedGames}
-          />
-          <label>Relaxation</label>
-          <Checkbox
-            label="relaxation"
-            value={checkedRelaxation}
-            onChange={handleCheckedRelaxation}
-          />
+      <div className="categorieAndButton">
+        <div className="categoriesContainer">
+          <p>Categories:</p>
+          <div className="categories">
+            <label>Sports</label>
+            <Checkbox
+              label="sports"
+              value={checkedSports}
+              onChange={handleCheckedSports}
+            />
+            <label>Games</label>
+            <Checkbox
+              label="games"
+              value={checkedGames}
+              onChange={handleCheckedGames}
+            />
+            <label>Relaxation</label>
+            <Checkbox
+              label="relaxation"
+              value={checkedRelaxation}
+              onChange={handleCheckedRelaxation}
+            />
+          </div>
+
         </div>
+        <button className="button" type="submit">
+          Submit
+        </button>
       </div>
-      <button className="button" type="submit">
-        Submit
-      </button>
     </form>
   );
 };

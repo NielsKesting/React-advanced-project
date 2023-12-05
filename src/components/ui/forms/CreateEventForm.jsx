@@ -65,7 +65,7 @@ export const CreateEventForm = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(event),
     }).then(() => {
-      window.alert("Event gepost");
+      window.alert("Event posted");
       navigateTo("/");
     });
   };

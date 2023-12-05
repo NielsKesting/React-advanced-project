@@ -94,15 +94,13 @@
     },
     {
       "createdBy": 4,
-      "title": "test",
-      "description": "test",
+      "title": "Test",
+      "description": "Zie titel",
       "image": "/",
-      "categoryIds": [
-        3
-      ],
-      "location": "test",
-      "startTime": "0000-00-00T00:00",
-      "endTime": "0000-00-01T23:59",
+      "categoryIds": [1],
+      "location": "Op werk",
+      "startTime": "0000-01-01T00:01",
+      "endTime": "0000-01-01T23:59",
       "id": 6
     }
   ],

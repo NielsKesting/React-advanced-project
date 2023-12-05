@@ -38,7 +38,7 @@ export const EventPage = () => {
     fetch(`http://localhost:3000/events/${id}`, {
       method: "DELETE",
     }).then(() => {
-      window.alert("Event verwijdert");
+      window.alert("Event deleted");
       navigateTo("/");
     });
   };
@@ -51,13 +51,13 @@ export const EventPage = () => {
             <div className="page">
               <img src={currentEvent.image}></img>
               <div className="infoBox">
-                <EditEventForm eventId={id} />
+                <EditEventForm editMode={editMode} setEditMode={setEditMode} currentEvent={currentEvent} />
                 <div className="buttonContainer">
                   <button className="button" onClick={handleDelete}>
                     Delete
                   </button>
                   <button className="button" onClick={handleEditMode}>
-                    Edit
+                    Back
                   </button>
                 </div>
               </div>

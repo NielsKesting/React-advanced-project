@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         element: <CreateUserForm />,
       },
       {
-        path: "/profile/:id",
+        path: "/profile",
         element: <EditProfile />,
         loader: GetData,
       },

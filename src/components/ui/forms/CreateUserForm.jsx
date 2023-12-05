@@ -22,7 +22,7 @@ export const CreateUserForm = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     }).then(() => {
-      window.alert("gelukt");
+      window.alert("User created");
       navigateTo("/");
     });
   };

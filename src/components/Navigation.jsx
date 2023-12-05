@@ -3,14 +3,17 @@ import "./Style/ButtonStyle/button.css";
 import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { ActiveUserContext } from "./ActiveUserContext";
+import { useNavigate } from "react-router-dom"
 
 export const Navigation = () => {
   const [activeUser, setActiveUser] = useContext(ActiveUserContext);
   let [loggedIn, updateLoggedIn] = useState(0);
+  const navigateTo = useNavigate();
 
   const handleLogout = () => {
     updateLoggedIn(0);
     setActiveUser([{ id: 0 }]);
+    navigateTo("/");
   };
 
   if (loggedIn == 0) {
@@ -40,7 +43,7 @@ export const Navigation = () => {
             </button>
           </li>
           <li>
-            <Link className="button" to={`profile/${activeUser[0].id}`}>
+            <Link className="button" to="/profile">
               Profile
             </Link>
           </li>
