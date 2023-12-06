@@ -1,36 +1,45 @@
 import { useState, useContext } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom";
 import { ActiveUserContext } from "../../ActiveUserContext";
 import "../../Style/EditFormStyle/form.css";
 import "../../Style/TextInputStyle/textInput.css";
 import { Checkbox } from "@chakra-ui/react";
 
 export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
+  const navigateTo = useNavigate();
   const getActiveUser = useContext(ActiveUserContext);
   const activeUser = getActiveUser[0];
   const currentEvent = getCurrentEvent.currentEvent;
-  const id = useParams()
-  const getId = id.id
+  const id = useParams();
+  const getId = id.id;
 
   const createdBy = activeUser[0].id;
   const [title, setTitle] = useState(currentEvent.title);
   const [description, setDescription] = useState(currentEvent.description);
   const [image, setImage] = useState(currentEvent.image);
   const [location, setLocation] = useState(currentEvent.location);
-  const [startDate, setStartDate] = useState(currentEvent.startTime.substring(0, 10));
-  const [sTime, setStartTime] = useState(currentEvent.startTime.substring(11, 16));
+  const [startDate, setStartDate] = useState(
+    currentEvent.startTime.substring(0, 10)
+  );
+  const [sTime, setStartTime] = useState(
+    currentEvent.startTime.substring(11, 16)
+  );
   const startTime = `${startDate}T${sTime}`;
   const [endDate, setEndDate] = useState(currentEvent.endTime.substring(0, 10));
   const [eTime, setEndTime] = useState(currentEvent.endTime.substring(11, 16));
   const endTime = `${endDate}T${eTime}`;
 
-  const categoryIds = [];
+  const categoryIds = [currentEvent.categoryIds];
   const [checkedSports, setCheckedSports] = useState(false);
   const handleCheckedSports = () => {
     setCheckedSports(!checkedSports);
   };
   if (checkedSports != false) {
-    categoryIds.push(1);
+    if (categoryIds.includes(1)) {
+      return;
+    } else {
+      categoryIds.push(1);
+    }
   }
 
   const [checkedGames, setCheckedGames] = useState(false);
@@ -38,7 +47,11 @@ export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
     setCheckedGames(!checkedGames);
   };
   if (checkedGames != false) {
-    categoryIds.push(2);
+    if (categoryIds.includes(2)) {
+      return;
+    } else {
+      return categoryIds.push(2);
+    }
   }
 
   const [checkedRelaxation, setCheckedRelaxation] = useState(false);
@@ -46,7 +59,11 @@ export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
     setCheckedRelaxation(!checkedGames);
   };
   if (checkedRelaxation != false) {
-    categoryIds.push(3);
+    if (categoryIds.includes(3)) {
+      return;
+    } else {
+      categoryIds.push(3);
+    }
   }
 
   const handleSubmit = (e) => {
@@ -67,6 +84,16 @@ export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
       body: JSON.stringify(event),
     }).then(() => {
       window.alert("Event edited");
+      sessionStorage.setItem(
+        "activeUser",
+        JSON.stringify({
+          id: activeUser[0].id,
+          name: activeUser[0].name,
+          password: activeUser[0].password,
+          image: activeUser[0].image,
+        })
+      );
+      navigateTo(0);
     });
   };
 
@@ -153,7 +180,6 @@ export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
               onChange={handleCheckedRelaxation}
             />
           </div>
-
         </div>
         <button className="button" type="submit">
           Submit

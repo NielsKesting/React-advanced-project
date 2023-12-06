@@ -5,8 +5,17 @@ import { Navigation } from "./Navigation";
 import { Box } from "@chakra-ui/react";
 
 export const Root = () => {
-  const [activeUser, setActiveUser] = useState([{ id: 0 }]);
-  console.log(sessionStorage.getItem('activeUser'))
+  const warehouse = JSON.parse(sessionStorage.getItem("activeUser"));
+  const isWarehouseEmpty = () => {
+    if (warehouse == null) {
+      return { id: 0 };
+    } else {
+      return warehouse;
+    }
+  };
+
+  const [activeUser, setActiveUser] = useState([isWarehouseEmpty()]);
+  console.log(warehouse);
 
   return (
     <>

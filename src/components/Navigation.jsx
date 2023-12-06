@@ -3,14 +3,12 @@ import "./Style/ButtonStyle/button.css";
 import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { ActiveUserContext } from "./ActiveUserContext";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 export const Navigation = () => {
   const [activeUser, setActiveUser] = useContext(ActiveUserContext);
   let [loggedIn, updateLoggedIn] = useState(0);
   const navigateTo = useNavigate();
-
-  console.log(activeUser)
 
   const handleLogout = () => {
     updateLoggedIn(0);

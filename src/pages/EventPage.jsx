@@ -35,15 +35,17 @@ export const EventPage = () => {
   };
 
   const handleDelete = () => {
-    fetch(`http://localhost:3000/events/${id}`, {
-      method: "DELETE",
-    }).then(() => {
-      window.alert("Event deleted");
-      navigateTo("/");
-    });
+    const result = confirm("Are you sure?");
+    if (result == true) {
+      fetch(`http://localhost:3000/events/${id}`, {
+        method: "DELETE",
+      }).then(() => {
+        navigateTo("/");
+      });
+    }
   };
 
-  if (currentEvent.createdBy === activeUser[0].id) {
+  if (currentEvent.createdBy == activeUser[0].id) {
     if (editMode == true) {
       return (
         <>
@@ -51,7 +53,11 @@ export const EventPage = () => {
             <div className="page">
               <img src={currentEvent.image}></img>
               <div className="infoBox">
-                <EditEventForm editMode={editMode} setEditMode={setEditMode} currentEvent={currentEvent} />
+                <EditEventForm
+                  editMode={editMode}
+                  setEditMode={setEditMode}
+                  currentEvent={currentEvent}
+                />
                 <div className="buttonContainer">
                   <button className="button" onClick={handleDelete}>
                     Delete
