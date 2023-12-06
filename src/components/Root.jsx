@@ -6,6 +6,7 @@ import { Box } from "@chakra-ui/react";
 
 export const Root = () => {
   const [activeUser, setActiveUser] = useState([{ id: 0 }]);
+  console.log(sessionStorage.getItem('activeUser'))
 
   return (
     <>

@@ -19,8 +19,8 @@
       "id": 3
     },
     {
-      "name": "test",
-      "password": "test",
+      "name": "test3",
+      "password": "test3",
       "image": "/",
       "id": 4
     }
@@ -97,7 +97,9 @@
       "title": "Test",
       "description": "Zie titel",
       "image": "/",
-      "categoryIds": [1],
+      "categoryIds": [
+        1
+      ],
       "location": "Op werk",
       "startTime": "0000-01-01T00:01",
       "endTime": "0000-01-01T23:59",

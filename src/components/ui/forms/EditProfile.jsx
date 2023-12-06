@@ -6,7 +6,6 @@ import "../../Style/EditProfileStyle/EditProfile.css"
 
 export const EditProfile = () => {
   const { users } = useLoaderData()
-  console.log(users)
   const navigateTo = useNavigate();
   const [activeUser, setActiveUser] = useContext(ActiveUserContext);
   const currentProfile = activeUser
@@ -34,7 +33,7 @@ export const EditProfile = () => {
     }).then(() => {
       setActiveUser([{id: 0}])
       window.alert("User deleted");
-      navigateTo("/");
+      navigateTo("/")
     });
   }
 
@@ -52,11 +51,9 @@ export const EditProfile = () => {
       body: JSON.stringify(user),
     }).then(() => {
       window.alert("User edited");
-      // let setUser = users.filter(
-      //   (object) =>
-      //     object.name.includes(name) && object.password.includes(password)
-      // );
-      // setActiveUser(setUser)
+      sessionStorage.setItem('activeUser', JSON.stringify({
+        "id": id
+      }))
       setEditMode((current) => !current);
     })
   };

@@ -10,6 +10,8 @@ export const Navigation = () => {
   let [loggedIn, updateLoggedIn] = useState(0);
   const navigateTo = useNavigate();
 
+  console.log(activeUser)
+
   const handleLogout = () => {
     updateLoggedIn(0);
     setActiveUser([{ id: 0 }]);
