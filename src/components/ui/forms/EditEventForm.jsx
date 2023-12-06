@@ -29,17 +29,13 @@ export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
   const [eTime, setEndTime] = useState(currentEvent.endTime.substring(11, 16));
   const endTime = `${endDate}T${eTime}`;
 
-  const categoryIds = [currentEvent.categoryIds];
+  const categoryIds = [];
   const [checkedSports, setCheckedSports] = useState(false);
   const handleCheckedSports = () => {
     setCheckedSports(!checkedSports);
   };
   if (checkedSports != false) {
-    if (categoryIds.includes(1)) {
-      return;
-    } else {
-      categoryIds.push(1);
-    }
+    categoryIds.push(1);
   }
 
   const [checkedGames, setCheckedGames] = useState(false);
@@ -47,11 +43,7 @@ export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
     setCheckedGames(!checkedGames);
   };
   if (checkedGames != false) {
-    if (categoryIds.includes(2)) {
-      return;
-    } else {
-      return categoryIds.push(2);
-    }
+    return categoryIds.push(2);
   }
 
   const [checkedRelaxation, setCheckedRelaxation] = useState(false);
@@ -59,11 +51,7 @@ export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
     setCheckedRelaxation(!checkedGames);
   };
   if (checkedRelaxation != false) {
-    if (categoryIds.includes(3)) {
-      return;
-    } else {
-      categoryIds.push(3);
-    }
+    categoryIds.push(3);
   }
 
   const handleSubmit = (e) => {
@@ -160,7 +148,7 @@ export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
       <div className="categorieAndButton">
         <div className="categoriesContainer">
           <p>Categories:</p>
-          <div className="categories">
+          <div required className="categories">
             <label>Sports</label>
             <Checkbox
               label="sports"
