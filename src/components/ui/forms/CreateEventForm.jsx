@@ -72,6 +72,7 @@ export const CreateEventForm = () => {
 
 	return (
 		<form className="form" onSubmit={handleSubmit}>
+			<h1>Create event</h1>
 			<input
 				className="textInput"
 				placeholder="Title"

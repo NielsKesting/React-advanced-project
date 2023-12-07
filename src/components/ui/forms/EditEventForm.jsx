@@ -112,64 +112,88 @@ export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
 
 	return (
 		<form className="editForm" onSubmit={handleSubmit}>
-			<input
-				className="textInput"
-				placeholder="Title"
-				required
-				value={title}
-				onChange={(title) => setTitle(title.target.value)}
-			></input>
-			<input
-				type="text"
-				className="textInput"
-				placeholder="Description"
-				required
-				value={description}
-				onChange={(description) => setDescription(description.target.value)}
-			></input>
-			<input
-				className="textInput"
-				placeholder="Image link"
-				required
-				value={image}
-				onChange={(image) => setImage(image.target.value)}
-			></input>
+			<div className="input">
+				<h2>Title</h2>
+				<input
+					className="textInput"
+					placeholder="Title"
+					required
+					value={title}
+					onChange={(title) => setTitle(title.target.value)}
+				></input>
+			</div>
+			<div className="input">
+				<h2>Description</h2>
+				<input
+					type="text"
+					className="textInput"
+					placeholder="Description"
+					required
+					value={description}
+					onChange={(description) => setDescription(description.target.value)}
+				></input>
+			</div>
+			<div className="input">
+				<h2>Image link</h2>
+				<input
+					className="textInput"
+					placeholder="Image link"
+					required
+					value={image}
+					onChange={(image) => setImage(image.target.value)}
+				></input>
+			</div>
+			<div className="input">
+				<h2>Location</h2>
+				<input
+					className="textInput"
+					placeholder="Location"
+					required
+					value={location}
+					onChange={(location) => setLocation(location.target.value)}
+				></input>
+			</div>
+			<div className="input">
+				<h2>Start date</h2>
+				<input
+					className="textInput"
+					placeholder="Start-date yyyy-mm-dd"
+					required
+					value={startDate}
+					onChange={(startDate) => setStartDate(startDate.target.value)}
+				></input>
+			</div>
+			<div className="input">
+				<h2>Start time</h2>
+				<input
+					className="textInput"
+					placeholder="Start-time 00:00"
+					required
+					value={sTime}
+					onChange={(sTime) => setStartTime(sTime.target.value)}
+				></input>
+			</div>
+			<div className="input">
+				<h2>End date</h2>
+				<input
+					className="textInput"
+					placeholder="End-date yyyy-mm-dd"
+					required
+					value={endDate}
+					onChange={(endDate) => setEndDate(endDate.target.value)}
+				></input>
+			</div>
+			<div className="input">
+				<h2>End time</h2>
 
-			<input
-				className="textInput"
-				placeholder="Location"
-				required
-				value={location}
-				onChange={(location) => setLocation(location.target.value)}
-			></input>
-			<input
-				className="textInput"
-				placeholder="Start-date yyyy-mm-dd"
-				required
-				value={startDate}
-				onChange={(startDate) => setStartDate(startDate.target.value)}
-			></input>
-			<input
-				className="textInput"
-				placeholder="Start-time 00:00"
-				required
-				value={sTime}
-				onChange={(sTime) => setStartTime(sTime.target.value)}
-			></input>
-			<input
-				className="textInput"
-				placeholder="End-date yyyy-mm-dd"
-				required
-				value={endDate}
-				onChange={(endDate) => setEndDate(endDate.target.value)}
-			></input>
-			<input
-				className="textInput"
-				placeholder="End-time 00:00"
-				required
-				value={eTime}
-				onChange={(eTime) => setEndTime(eTime.target.value)}
-			></input>
+				<input
+					className="textInput"
+					placeholder="End-time 00:00"
+					required
+					value={eTime}
+					onChange={(eTime) => setEndTime(eTime.target.value)}
+				></input>
+			</div>
 			<div className="categorieAndButton">
 				<div className="categoriesContainer">
 					<p>Categories:</p>

@@ -35,6 +35,7 @@ export const LoginForm = () => {
 
 	return (
 		<form className="form" onSubmit={handleLoginSubmit}>
+			<h1>Log in</h1>
 			<input
 				className="textInput"
 				placeholder="Username"

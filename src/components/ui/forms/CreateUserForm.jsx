@@ -23,12 +23,13 @@ export const CreateUserForm = () => {
 			body: JSON.stringify(user),
 		}).then(() => {
 			window.alert("User created");
-			navigateTo("/");
+			navigateTo("/login");
 		});
 	};
 
 	return (
 		<form className="form" onSubmit={handleSubmit}>
+			<h1>Create user</h1>
 			<input
 				className="textInput"
 				placeholder="Username"
