@@ -19,4 +19,10 @@
 .categories {
 	display: flex;
 	justify-content: space-between;
+
+	.label {
+		display: flex;
+		gap: 7px;
+		cursor: pointer;
+	}
 }

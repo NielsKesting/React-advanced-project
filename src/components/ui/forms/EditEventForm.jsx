@@ -41,27 +41,40 @@ export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
 			return false;
 		}
 	};
-	const [checkedSports, setCheckedSports] = useState(sportsIsChecked);
+	const [checkedSports, setCheckedSports] = useState(sportsIsChecked());
 	const handleCheckedSports = () => {
 		setCheckedSports(!checkedSports);
 	};
 	if (checkedSports == true) {
 		categoryIds.push(1);
 	}
+	// console.log(checkedSports);
 
-	const [checkedGames, setCheckedGames] = useState(false);
+	const gamesIsChecked = () => {
+		if (currentEvent.categoryIds.includes(2)) {
+			return true;
+		}
+	};
+	const [checkedGames, setCheckedGames] = useState(gamesIsChecked());
 	const handleCheckedGames = () => {
 		setCheckedGames(!checkedGames);
 	};
-	if (checkedGames != false) {
-		return categoryIds.push(2);
+	if (checkedGames == true) {
+		categoryIds.push(2);
 	}
 
-	const [checkedRelaxation, setCheckedRelaxation] = useState(false);
-	const handleCheckedRelaxation = () => {
-		setCheckedRelaxation(!checkedGames);
+	const relaxationIsChecked = () => {
+		if (currentEvent.categoryIds.includes(3)) {
+			return true;
+		}
 	};
-	if (checkedRelaxation != false) {
+	const [checkedRelaxation, setCheckedRelaxation] = useState(
+		relaxationIsChecked()
+	);
+	const handleCheckedRelaxation = () => {
+		setCheckedRelaxation(!checkedRelaxation);
+	};
+	if (checkedRelaxation == true) {
 		categoryIds.push(3);
 	}
 
@@ -161,25 +174,33 @@ export const EditEventForm = (/*editMode, setEditMode,*/ getCurrentEvent) => {
 				<div className="categoriesContainer">
 					<p>Categories:</p>
 					<div required className="categories">
-						<label>Sports</label>
-						<Checkbox
-							label="sports"
-							value={checkedSports}
-							onChange={handleCheckedSports}
-							isChecked={sportsIsChecked()}
-						/>
-						<label>Games</label>
-						<Checkbox
-							label="games"
-							value={checkedGames}
-							onChange={handleCheckedGames}
-						/>
-						<label>Relaxation</label>
-						<Checkbox
-							label="relaxation"
-							value={checkedRelaxation}
-							onChange={handleCheckedRelaxation}
-						/>
+						<label className="label">
+							Sports
+							<Checkbox
+								label="sports"
+								value={checkedSports}
+								isChecked={checkedSports}
+								onChange={handleCheckedSports}
+							/>
+						</label>
+						<label className="label">
+							Games
+							<Checkbox
+								label="games"
+								value={checkedGames}
+								isChecked={checkedGames}
+								onChange={handleCheckedGames}
+							/>
+						</label>
+						<label className="label">
+							Relaxation
+							<Checkbox
+								label="relaxation"
+								value={checkedRelaxation}
+								isChecked={checkedRelaxation}
+								onChange={handleCheckedRelaxation}
+							/>
+						</label>
 					</div>
 				</div>
 				<button className="button" type="submit">

@@ -29,11 +29,13 @@ export const PostCard = ({ post }) => {
 				" & " +
 				categoryFilter(postCategory2)
 			);
-		} else {
+		} else if (postCategories.length == 1) {
 			const oneCategory = categories.filter(
 				(category) => category.id == postCategories
 			);
 			return "Category: " + oneCategory[0].name;
+		} else {
+			return "Categorie: none";
 		}
 	};
 

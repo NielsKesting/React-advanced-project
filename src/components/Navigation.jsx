@@ -11,7 +11,8 @@ export const Navigation = () => {
 	const navigateTo = useNavigate();
 
 	const handleLogout = () => {
-		updateLoggedIn(0);
+		// updateLoggedIn(0);
+		sessionStorage.setItem("activeUser", JSON.stringify({ id: 0 }));
 		setActiveUser([{ id: 0 }]);
 		navigateTo("/");
 	};

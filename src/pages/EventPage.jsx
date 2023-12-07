@@ -25,13 +25,43 @@ export const EventPage = () => {
 	);
 	const madeBy = getMadeBy[0];
 
-	const getCurrentCategories = categories.filter(
-		(category) => category.id == parseInt(currentEvent.categoryIds)
-	);
-	const currentCategories = getCurrentCategories[0];
-
 	const getTime = (info) => {
 		return info.substring(0, 10) + " at: " + info.substring(11, 16);
+	};
+
+	const getCategories = (postCategories) => {
+		if (postCategories.length == 3) {
+			return (
+				"Categories: " +
+				categories[0].name +
+				" , " +
+				categories[1].name +
+				" & " +
+				categories[2].name
+			);
+		} else if (postCategories.length == 2) {
+			const postCategory1 = postCategories[0];
+			const postCategory2 = postCategories[1];
+			const categoryFilter = (postCategory) => {
+				const categoryType = categories.filter(
+					(category) => category.id == postCategory
+				);
+				return categoryType[0].name;
+			};
+			return (
+				"Categories: " +
+				categoryFilter(postCategory1) +
+				" & " +
+				categoryFilter(postCategory2)
+			);
+		} else if (postCategories.length == 1) {
+			const oneCategory = categories.filter(
+				(category) => category.id == postCategories
+			);
+			return "Category: " + oneCategory[0].name;
+		} else {
+			return "Categorie: none";
+		}
 	};
 
 	const handleDelete = () => {
@@ -87,7 +117,7 @@ export const EventPage = () => {
 								<p>Location: {currentEvent.location}</p>
 								<p>Starts at: {getTime(currentEvent.startTime)}</p>
 								<p>Ends at: {getTime(currentEvent.endTime)}</p>
-								<p>Categories: {currentCategories.name}</p>
+								<p>{getCategories(currentEvent.categoryIds)}</p>
 								<div className="buttonContainer">
 									<button className="button" onClick={handleDelete}>
 										Delete
@@ -119,7 +149,7 @@ export const EventPage = () => {
 							<p>Location: {currentEvent.location}</p>
 							<p>Starts at: {getTime(currentEvent.startTime)}</p>
 							<p>Ends at: {getTime(currentEvent.endTime)}</p>
-							<p>Categories: {currentCategories.name}</p>
+							<p>{getCategories(currentEvent.categoryIds)}</p>
 						</div>
 					</div>
 					<div className="madeBy">

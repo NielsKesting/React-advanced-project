@@ -16,8 +16,21 @@ export const LoginForm = () => {
 		let user = users.filter(
 			(object) => object.name == username && object.password == password
 		);
-		setActiveUser(user);
-		navigateTo("/");
+		if (user.length == 0) {
+			window.alert("Wrong username or password.");
+		} else {
+			setActiveUser(user);
+			sessionStorage.setItem(
+				"activeUser",
+				JSON.stringify({
+					id: user[0].id,
+					name: user[0].name,
+					password: user[0].password,
+					image: user[0].image,
+				})
+			);
+			navigateTo("/");
+		}
 	};
 
 	return (

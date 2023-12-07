@@ -13,8 +13,12 @@ export const Root = () => {
 			return warehouse;
 		}
 	};
+	// console.log("warehouse", warehouse);
+	// console.log("isWarehouseEmpty", isWarehouseEmpty());
 
 	const [activeUser, setActiveUser] = useState([isWarehouseEmpty()]);
+
+	// console.log("activeUser", activeUser);
 
 	return (
 		<>

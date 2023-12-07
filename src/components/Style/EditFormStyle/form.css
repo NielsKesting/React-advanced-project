@@ -19,4 +19,9 @@
 .categories {
   display: flex;
   justify-content: space-between;
+}
+.categories .label {
+  display: flex;
+  gap: 7px;
+  cursor: pointer;
 }/*# sourceMappingURL=form.css.map */
